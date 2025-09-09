@@ -26,7 +26,7 @@ export default function FilterBar({selectedFilter,onFilterChange}:FilterBarProps
                         :'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
                         }`}>
                             {option.label}
-                            <ChevronDown class name="w-3 h-3"/>
+                            <ChevronDown className="w-3 h-3"/>
                         </button>
                     ))}
             </div>
