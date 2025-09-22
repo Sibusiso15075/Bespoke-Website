@@ -1,8 +1,8 @@
-import Header from './Header'
+import Header from 'Frontend\src\Header.tsx'
 import { BrowserRouter as Router, Routes, Route } from "react-router";
-import './App.css'
-import FilterBar from './FilterBar'
-import SearchBar  from './SearchBar'
+import 'Frontend\src\App.css'
+import FilterBar from 'Frontend\src\FilterBar.tsx'
+import SearchBar  from 'Frontend\src\SearchBar.tsx'
 
 function App() {
   return(

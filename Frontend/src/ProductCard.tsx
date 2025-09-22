@@ -1,4 +1,4 @@
-import { Product } from '';
+import { Product } from './shared/types';
 
 interface ProductCardProps {
   product: Product;

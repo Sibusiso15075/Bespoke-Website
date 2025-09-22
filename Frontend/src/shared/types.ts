@@ -5,8 +5,10 @@ export const ProductSchema = z.object({
     id: z.string(),
     name: z.string(),
     price: z.number(),
+    image: z.string(),
     category: z.string(),
     variants: z.string(), // (B) for Black, (W) for White,etc.
+
 });
 
 export type Product = z.infer<typeof ProductSchema>;
