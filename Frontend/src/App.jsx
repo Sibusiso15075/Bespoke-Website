@@ -1,27 +1,27 @@
-import Header from 'Frontend\src\Header.tsx'
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-import 'Frontend\src\App.css'
-import FilterBar from 'Frontend\src\FilterBar.tsx'
-import SearchBar  from 'Frontend\src\SearchBar.tsx'
-
+import Header from "./Header.tsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import FilterBar from "./FilterBar.tsx";
+import SearchBar from "./SearchBar.tsx";
+import ProductCard from "./ProductCard.tsx";
+import HomePage from "./HomePage.jsx";
+import ProductDetail from "./ProductDetail.jsx";
 function App() {
-  return(
+  return (
     <>
-    <Header></Header>
-    <FilterBar></FilterBar>
-    <SearchBar></SearchBar> 
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path='/products/:id' element={<ProductDetail/>} />
-      </Routes>
-    </Router>
+      <Header></Header>
+      <FilterBar></FilterBar>
+      <SearchBar></SearchBar>
+      <ProductCard></ProductCard>
+
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+        </Routes>
+      </Router>
     </>
-  )
-  
+  );
 }
 
-export default App
-
-
-
+export default App;
