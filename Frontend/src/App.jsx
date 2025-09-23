@@ -9,17 +9,14 @@ import ProductDetail from "./ProductDetail.jsx";
 function App() {
   return (
     <>
-      <Header></Header>
-      <FilterBar></FilterBar>
-      <SearchBar></SearchBar>
-      <ProductCard></ProductCard>
-
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products/:id" element={<ProductDetail />} />
         </Routes>
       </Router>
+      <FilterBar></FilterBar>
+      <SearchBar></SearchBar>
     </>
   );
 }

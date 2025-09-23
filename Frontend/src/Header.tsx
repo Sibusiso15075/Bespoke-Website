@@ -1,4 +1,10 @@
-import { Menu } from 'lucide-react';
+import { Menu } from "lucide-react";
+import ProductCard from "./ProductCard.tsx";
+import { Product } from "./shared/types.ts";
+import FilterBar from "./FilterBar.tsx";
+import SearchBar from "./SearchBar.tsx";
+import React from "react";
+import "./App.css";
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -6,12 +12,13 @@ interface HeaderProps {
 
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="flex items-center justify-between px-4 py-4 border-b border-gray-100">
-      <h1 className="text-2xl font-bold text-black tracking-tight">
-        Bespoke
-      </h1>
-      
-      <button 
+    <header className="Header">
+      <div className="container">
+        <h1>BESPOKE</h1>
+        <p>Welcome to our bespoke product store!</p>
+      </div>
+
+      <button
         onClick={onMenuClick}
         className="p-2 hover:bg-gray-50 rounded-lg transition-colors"
         aria-label="Menu"
@@ -21,3 +28,4 @@ export default function Header({ onMenuClick }: HeaderProps) {
     </header>
   );
 }
+// export default Header;

@@ -1,5 +1,11 @@
+import React from "react";
+import "./App.css";
+import ProductCard from "./ProductCard.tsx";
+import "./Header.tsx";
+import Header from "./Header.tsx";
+
 function HomePage() {
-  return <h1>Welcome to the Homepage</h1>;
+  return <Header></Header>;
 }
 
 export default HomePage;
