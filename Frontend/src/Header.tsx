@@ -13,9 +13,10 @@ interface HeaderProps {
 export default function Header({ onMenuClick }: HeaderProps) {
   return (
     <header className="Header">
-      <div className="container">
-        <h1>BESPOKE</h1>
-        <p>Welcome to our bespoke product store!</p>
+      <div className="header-container">
+        <h1>"BESPOKE"</h1>
+        <br />
+        <p>Where style meets creativity!</p>
       </div>
 
       <button

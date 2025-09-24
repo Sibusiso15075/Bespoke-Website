@@ -1,13 +1,60 @@
 #root {
+  font-family: "CustomFont", sans-serif, Arial;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+@font-face {
+  font-family: "CustomFont";
+  font-weight: normal;
+  font-style: normal;
+  src: url(/Frontend/src/assets/fonts/Argentum-Novus-Medium/ArgentumNovus-Black.ttf)
+      format("truetype"),
+    url(/Frontend/src/assets/fonts/Argentum-Novus-Medium/ArgentumNovus-BlackItalic.ttf)
+      format("truetype");
+}
+
+/* Header Styles */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* Product Card Styles */
 .card {
   padding: 2em;
 }
-
+.purchase-cta {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+.purchase-cta button {
+  background-color: #24292e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 .Product-container {
   display: flex;
   flex-direction: column;
@@ -17,10 +64,26 @@
 }
 
 .image {
-  height: auto;
-  max-width: 300px;
+  height: 300px;
+  max-width: 250px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   object-fit: cover;
   transition: transform 0.3s ease;
+}
+
+.Product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

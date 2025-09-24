@@ -15,8 +15,6 @@ function App() {
           <Route path="/products/:id" element={<ProductDetail />} />
         </Routes>
       </Router>
-      <FilterBar></FilterBar>
-      <SearchBar></SearchBar>
     </>
   );
 }
