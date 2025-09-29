@@ -25,7 +25,7 @@ function ProductDetail() {
 
   const sizes = ['S','M','L','XL'];
 
-  const handleQuantityChange = (change:number)=>{
+  const handleQuantityChange = (change)=>{
     setQuantity(Math.max(1,quantity + change));
   };
 
