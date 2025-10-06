@@ -1,13 +1,13 @@
-import { ShoppingBag } from 'lucide-react';
-import { Link } from 'react-router';
-import { useCart } from './contexts/CartContext';
+import { ShoppingBag } from "lucide-react";
+import { Link } from "react-router";
+import { useCart } from "../contexts/CartContext.tsx";
 
 export default function CartIcon() {
   const { itemCount } = useCart();
 
   return (
-    <Link 
-      to="/cart" 
+    <Link
+      to="/cart"
       className="relative p-2 hover:bg-gray-50 rounded-lg transition-colors"
       aria-label="Shopping Cart"
     >

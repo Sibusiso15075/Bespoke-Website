@@ -1,5 +1,5 @@
-import { Plus, Minus, X } from 'lucide-react';
-import { CartItem as CartItemType } from './contexts/CartContext';
+import { Plus, Minus, X } from "lucide-react";
+import { CartItem as CartItemType } from "../contexts/CartContext.tsx";
 
 interface CartItemProps {
   item: CartItemType;
@@ -7,7 +7,11 @@ interface CartItemProps {
   onRemove: (id: string) => void;
 }
 
-export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
+export default function CartItem({
+  item,
+  onUpdateQuantity,
+  onRemove,
+}: CartItemProps) {
   const handleQuantityChange = (change: number) => {
     const newQuantity = item.quantity + change;
     if (newQuantity > 0) {
@@ -35,7 +39,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
             </h3>
             <p className="text-sm text-gray-500">Size: {item.size}</p>
           </div>
-          
+
           <button
             onClick={() => onRemove(item.id)}
             className="p-1 hover:bg-gray-50 rounded transition-colors flex-shrink-0"
@@ -55,7 +59,9 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
             >
               <Minus className="w-3 h-3" />
             </button>
-            <span className="text-sm font-medium w-8 text-center">{item.quantity}</span>
+            <span className="text-sm font-medium w-8 text-center">
+              {item.quantity}
+            </span>
             <button
               onClick={() => handleQuantityChange(1)}
               className="w-7 h-7 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 transition-colors"
