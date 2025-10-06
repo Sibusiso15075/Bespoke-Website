@@ -26,7 +26,7 @@ $sql = "SELECT Product_ID, Product_Name, Price, Product_Description,Product_Imag
 $result = $conn->query($sql);
 
 $products = [];
-
+//loop to loop through every part of DB
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $products[] = $row;
