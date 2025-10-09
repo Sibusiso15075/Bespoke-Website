@@ -5,8 +5,26 @@ import "./Header.tsx";
 import SearchBar from "./SearchBar.tsx";
 import Header from "./Header.tsx";
 import FilterBar from "./FilterBar.tsx";
-
+import { useState, useEffect } from "react";
 function HomePage() {
+  const [products, setProducts] = useState([]);
+
+  /*useEffect(() => {
+    fetch(".Backend/Products.php")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+    
+  }, []);*/
+  useEffect(() => {
+    fetch("http://localhost/api.php")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        console.log(data); // to confirm it’s received
+      })
+      .catch((error) => console.error("Error fetching products:", error));
+  }, []);
+
   return (
     <>
       <div className="header-container">
@@ -14,33 +32,18 @@ function HomePage() {
         <div className="search-container">
           <SearchBar></SearchBar>
         </div>
+
         <div className="filterBar-container">
           <FilterBar></FilterBar>
         </div>
       </div>
 
-      <p>
-        <h3>New Arrivals</h3>
-      </p>
-      <div className="Product-container">
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-      </div>
+      <h3>New Arrivals</h3>
 
-      <p>
-        <h3>Tees</h3>
-      </p>
       <div className="Product-container">
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </>
   );
