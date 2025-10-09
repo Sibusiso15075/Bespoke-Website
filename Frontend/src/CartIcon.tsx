@@ -8,12 +8,12 @@ export default function CartIcon() {
   return (
     <Link 
       to="/cart" 
-      className="relative p-2 hover:bg-gray-50 rounded-lg transition-colors"
+      className="cart-icon"
       aria-label="Shopping Cart"
     >
-      <ShoppingBag className="w-6 h-6 text-black" />
+      <ShoppingBag className="w-6 h-6" />
       {itemCount > 0 && (
-        <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+        <span className="cart-badge">
           {itemCount}
         </span>
       )}
