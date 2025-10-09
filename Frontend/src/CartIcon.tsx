@@ -1,6 +1,6 @@
-import { ShoppingBag } from 'lucide-react';
-import { Link } from 'react-router';
-import { useCart } from './contexts/CartContext';
+import { ShoppingBag } from "lucide-react";
+import { Link } from "react-router";
+import { useCart } from "../contexts/CartContext.tsx";
 
 export default function CartIcon() {
   const { itemCount } = useCart();

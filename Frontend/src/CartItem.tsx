@@ -1,5 +1,5 @@
-import { Plus, Minus, X } from 'lucide-react';
-import { CartItem as CartItemType } from './contexts/CartContext';
+import { Plus, Minus, X } from "lucide-react";
+import { CartItem as CartItemType } from "../contexts/CartContext.tsx";
 
 interface CartItemProps {
   item: CartItemType;
@@ -7,7 +7,11 @@ interface CartItemProps {
   onRemove: (id: string) => void;
 }
 
-export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
+export default function CartItem({
+  item,
+  onUpdateQuantity,
+  onRemove,
+}: CartItemProps) {
   const handleQuantityChange = (change: number) => {
     const newQuantity = item.quantity + change;
     if (newQuantity > 0) {
@@ -35,7 +39,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
             </h3>
             <p className="cart-item-size">Size: {item.size}</p>
           </div>
-          
+
           <button
             onClick={() => onRemove(item.id)}
             className="cart-item-remove"

@@ -1,15 +1,16 @@
-import { Link } from 'react-router';
-import { ArrowLeft, ShoppingBag } from 'lucide-react';
-import { useCart } from './contexts/CartContext';
-import CartItem from './CartItem';
-import CartIcon from './CartIcon';
+import { Link } from "react-router";
+import { ArrowLeft, ShoppingBag } from "lucide-react";
+import { useCart } from "../contexts/CartContext.tsx";
+import CartItem from "./CartItem";
+import CartIcon from "./CartIcon";
 
 export default function Cart() {
-  const { items, total, itemCount, updateQuantity, removeFromCart, clearCart } = useCart();
+  const { items, total, itemCount, updateQuantity, removeFromCart, clearCart } =
+    useCart();
 
-//   const shipping = total > 0 ? 50 : 0; // Free shipping over certain amount could be implemented
-//   const tax = Math.round(total * 0.15); // 15% tax
-//   const finalTotal = total + shipping + tax;
+  //   const shipping = total > 0 ? 50 : 0; // Free shipping over certain amount could be implemented
+  //   const tax = Math.round(total * 0.15); // 15% tax
+  //   const finalTotal = total + shipping + tax;
 
   if (items.length === 0) {
     return (
@@ -50,13 +51,16 @@ export default function Cart() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-4 border-b border-gray-100">
-        <Link to="/" className="flex items-center gap-2 text-black hover:text-gray-600 transition-colors">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-black hover:text-gray-600 transition-colors"
+        >
           <ArrowLeft className="w-5 h-5" />
           <span className="font-medium">Back</span>
         </Link>
-        
+
         <h1 className="text-lg font-bold text-black">Cart ({itemCount})</h1>
-        
+
         <button
           onClick={clearCart}
           className="text-sm text-gray-600 hover:text-black transition-colors"
@@ -110,7 +114,7 @@ export default function Cart() {
             </div>
           </div>
         </div>
-
+*/}
         {/* Checkout Button */}
         <button className="checkout-button">
           Proceed to Checkout
