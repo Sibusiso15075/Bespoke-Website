@@ -5,22 +5,26 @@ import "./Header.tsx";
 import SearchBar from "./SearchBar.tsx";
 import Header from "./Header.tsx";
 import FilterBar from "./FilterBar.tsx";
-import { useProducts } from "../hooks/useProducts.ts";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 function HomePage() {
-  const [isMenuOpen, setIsOpen] = useState(false);
-  const {
-    products,
-    searchTerm,
-    setSearchTerm,
-    selcetedFilter,
-    setSelectedFilter,
-  } = useProducts();
+  const [products, setProducts] = useState([]);
 
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  /*useEffect(() => {
+    fetch(".Backend/Products.php")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+    
+  }, []);*/
+  useEffect(() => {
+    fetch("http://localhost/api.php")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        console.log(data); // to confirm it’s received
+      })
+      .catch((error) => console.error("Error fetching products:", error));
+  }, []);
+
   return (
     <>
       <div className="header-container">
@@ -28,6 +32,7 @@ function HomePage() {
         <div className="search-container">
           <SearchBar searchTerm={searchTerm}></SearchBar>
         </div>
+
         <div className="filterBar-container">
           <FilterBar
             selectedFilter={selcetedFilter}
