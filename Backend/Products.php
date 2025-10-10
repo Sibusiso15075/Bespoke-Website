@@ -5,6 +5,7 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header(header: 'Content-Type: application/json');
 
+
 //connect to database
 
 try {
@@ -55,4 +56,4 @@ echo $str;
 
 
 
-?>
+?>0
