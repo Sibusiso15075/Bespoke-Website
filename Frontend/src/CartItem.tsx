@@ -20,9 +20,9 @@ export default function CartItem({
   };
 
   return (
-    <div className="flex gap-4 py-6 border-b border-gray-100">
+    <div className="cart-item">
       {/* Product Image */}
-      <div className="w-20 h-20 bg-gray-50 rounded-lg overflow-hidden flex-shrink-0">
+      <div className="cart-item-image">
         <img
           src={item.product.image}
           alt={item.product.name}
@@ -31,52 +31,50 @@ export default function CartItem({
       </div>
 
       {/* Product Details */}
-      <div className="flex-1 min-w-0">
-        <div className="flex justify-between items-start mb-2">
-          <div>
-            <h3 className="text-sm font-medium text-black truncate">
+      <div className="cart-item-details">
+        <div className="cart-item-header">
+          <div className="cart-item-info">
+            <h3 className="cart-item-name">
               {item.product.name}
             </h3>
-            <p className="text-sm text-gray-500">Size: {item.size}</p>
+            <p className="cart-item-size">Size: {item.size}</p>
           </div>
 
           <button
             onClick={() => onRemove(item.id)}
-            className="p-1 hover:bg-gray-50 rounded transition-colors flex-shrink-0"
+            className="cart-item-remove"
             aria-label="Remove item"
           >
             <X className="w-4 h-4 text-gray-400" />
           </button>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="cart-item-controls">
           {/* Quantity Controls */}
-          <div className="flex items-center gap-2">
+          <div className="quantity-controls">
             <button
               onClick={() => handleQuantityChange(-1)}
-              className="w-7 h-7 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 transition-colors"
+              className="quantity-button"
               disabled={item.quantity <= 1}
             >
               <Minus className="w-3 h-3" />
             </button>
-            <span className="text-sm font-medium w-8 text-center">
-              {item.quantity}
-            </span>
+            <span className="quantity-display">{item.quantity}</span>
             <button
               onClick={() => handleQuantityChange(1)}
-              className="w-7 h-7 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 transition-colors"
+              className="quantity-button"
             >
               <Plus className="w-3 h-3" />
             </button>
           </div>
 
           {/* Price */}
-          <div className="text-right">
-            <p className="text-sm font-semibold text-black">
+          <div className="cart-item-price">
+            <p className="price-total">
               R{(item.product.price * item.quantity).toFixed(0)}
             </p>
             {item.quantity > 1 && (
-              <p className="text-xs text-gray-500">
+              <p className="price-each">
                 R{item.product.price} each
               </p>
             )}

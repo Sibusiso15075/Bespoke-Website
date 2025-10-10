@@ -10,18 +10,19 @@ function ProductDetail() {
 
   const product= products.find(p => p.id === id)
 
-  if(!product){
-    return(
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2x1 font-bold text-gray-900 mb-4">Product Not Found</h1>
-          <link to="" className="text-blue-600 hover:text-blue-800">
-           Return to Home
-          </link> 
-        </div> 
+ if (!product) {
+    return (
+      <div className="not-found">
+        <div className="not-found-content">
+          <h1 className="not-found-title">Product Not Found</h1>
+          <Link to="/" className="not-found-link">
+            Return to Home
+          </Link>
+        </div>
       </div>
     );
   }
+
 
   const sizes = ['S','M','L','XL'];
 
@@ -38,47 +39,153 @@ function ProductDetail() {
     alert(`Added ${quantity} of size ${selectedSize} to cart`);
   };
 
-  return(
-    <div className="min-h-screen bg-white">
-      {/*Header */}
-      <header className="flex items-center justify-between px-4 py-4 border-b border-gray-180">
-        <Link className="flex items-center gap-2 text-black hover:text-gray-600 transition-colors">
-        
-        <ArrowLeft className= "w-5 h-5"/>
+ return (
+    <div className="page-container">
+      {/* Header */}
+      <header className="product-detail-header">
+        <Link to="/" className="back-link">
+          <ArrowLeft className="w-5 h-5" />
         </Link>
-
-
-        <nav className="hidden md:flex items-center gap-8 text-sm">
-          <a href="#" className="hover:text-gray-600 transition-colors">Products</a>
-          <a href="#" className="hover:text-gray-600 transition-colors">T-Shirts</a>
-          <a href="#" className="hover:text-gray-600 transition-colors">Accessories</a>
-          <a href="#" className="hover:text-gray-600 transition-colors">Shipping</a>
+        
+        <nav className="product-nav">
+          <a href="#">Products</a>
+          <a href="#">Shipping</a>
+          <a href="#">T-Shirts</a>
+          <a href="#">Bundles</a>
+          <a href="#">Pricing</a>
+          <a href="#">Accessories</a>
         </nav>
 
-        <div className="flex items-center gap-4">
-        <button className="text-sm px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 transition-colors">
-          Sign Up
-        </button>
-        <button className="text-sm px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition-colors">
-          Follow 
-        </button>
+
+        <div className="product-header-controls">
+          <CartIcon />
+          <button className="auth-button signup">
+            Sign Up
+          </button>
+          <button className="auth-button follow">
+            Follow
+          </button>
         </div>
       </header>
 
-
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Product Image */}
-          <div className="space-y-4">
-            <div className="aspect-square bg-gray-500 rounded-lg overflow-hidden">
-              <img src="" alt="" />
+     {/* Product Detail */}
+      <div className="product-detail-content">
+        <div className="product-detail-grid">
+          {/* Product Images */}
+          <div className="product-images">
+            <div className="main-image">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
             </div>
+            
+            {/* Thumbnail images */}
+            <div className="thumbnails">
+              {[1, 2, 3, 4].map((index) => (
+                <div key={index} className="thumbnail">
+                  <img
+                    src={product.image}
+                    alt={`${product.name} view ${index}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Product Info */}
+          <div className="product-info">
+            <div className="product-title-section">
+              <h1 className="product-detail-title">{product.name}</h1>
+              <div className="product-price-section">
+                <span className="product-detail-price">R{product.price}</span>
+                <span className="tax-label">Tax</span>
+              </div>
+            </div>
+
+            {/* Size Selection */}
+            <div className="form-section">
+              <label className="form-label">Size</label>
+              <select
+                value={selectedSize}
+                onChange={(e) => setSelectedSize(e.target.value)}
+                className="size-select"
+              >
+                <option value="">Select size</option>
+                {sizes.map((size) => (
+                  <option key={size} value={size}>{size}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Quantity Selection */}
+            <div className="form-section">
+              <label className="form-label">Quantity</label>
+              <div className="quantity-section">
+                <button
+                  onClick={() => handleQuantityChange(-1)}
+                  className="quantity-button-large"
+                  disabled={quantity <= 1}
+                >
+                  <Minus className="w-4 h-4" />
+                </button>
+                <span className="quantity-display-large">{quantity}</span>
+                <button
+                  onClick={() => handleQuantityChange(1)}
+                  className="quantity-button-large"
+                >
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Add to Cart Button */}
+            <button
+              onClick={handleAddToCart}
+              className="add-to-cart-button"
+            >
+              Add to Cart
+            </button>
+
+            {/* Product Description */}
+            <div className="product-description">
+              <h3 className="description-title">Description</h3>
+              <div className="description-list">
+                <p>• 100% BLACK COTTON</p>
+                <p>• PREMIUM T-SHIRT</p>
+                <p>• GARMENT WASHED FOR SOFT FEEL AND EMBROIDERY</p>
+                <p>• SILICON SOFTENER LASTING</p>
+                <p>• FORM FLATTERING BOTTOM HEM</p>
+                <p>• OVERSIZED RELAXED FIT WITH ROLLED SLEEVES SHAPE</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Newsletter Section */}
+      <div className="newsletter-section">
+        <div className="newsletter-container">
+          <h3 className="newsletter-title">Follow the latest trends</h3>
+          <p className="newsletter-subtitle">With our daily newsletter</p>
+          
+          <div className="newsletter-form">
+            <input
+              type="email"
+              placeholder="yourname@site.com"
+              className="newsletter-input"
+            />
+            <button className="newsletter-button">
+              Start
+            </button>
           </div>
         </div>
       </div>
     </div>
   )
-  return <h1>Product Detail for ID: {id}</h1>;
+  // return <h1>Product Detail for ID: {id}</h1>;
 }
 
 export default ProductDetail;

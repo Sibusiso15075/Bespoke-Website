@@ -9,12 +9,15 @@ import ProductDetail from "./ProductDetail.jsx";
 function App() {
   return (
     <>
+     <CartProvider> 
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path = "/cart" element = {<Cart/>}/>
         </Routes>
       </Router>
+      </CartProvider>
     </>
   );
 }
