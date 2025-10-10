@@ -28,22 +28,41 @@ function HomePage() {
   return (
     <>
       <div className="header-container">
-        <Header></Header>
+        <Header onMenuClick={handleMenuClick}></Header>
         <div className="search-container">
-          <SearchBar></SearchBar>
+          <SearchBar searchTerm={searchTerm}></SearchBar>
         </div>
 
         <div className="filterBar-container">
-          <FilterBar></FilterBar>
+          <FilterBar
+            selectedFilter={selcetedFilter}
+            onFilterChange={setSelectedFilter}
+          ></FilterBar>
         </div>
       </div>
 
-      <h3>New Arrivals</h3>
+      <div className="products">
+        <h3>New Arrivals</h3>
 
-      <div className="Product-container">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        <div className="Product-container">
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+        </div>
+
+        <h3>Tees</h3>
+
+        <div className="Product-container">
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+          <ProductCard></ProductCard>
+        </div>
       </div>
     </>
   );

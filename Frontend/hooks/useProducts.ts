@@ -1,9 +1,9 @@
 import { useState, useMemo } from "react";
-import { products as allProducts } from "../data/products.ts";
+import { products as allProducts } from "../data/products";
 
 export function useProducts() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("nav");
+  const [selectedFilter, setSelectedFilter] = useState("new");
 
   const filteredProducts = useMemo(() => {
     let filtered = allProducts.filter((product) =>
@@ -18,11 +18,11 @@ export function useProducts() {
       case "price_desc":
         filtered = filtered.sort((a, b) => b.price - a.price);
         break;
-      case "rising":
-        // For "rising", we'll sort by ID (newest first) as a proxy for trending
+      case "rating":
+        // For "rating", we'll sort by ID (newest first) as a proxy for trending
         filtered = filtered.sort((a, b) => b.id.localeCompare(a.id));
         break;
-      case "nav":
+      case "new":
       default:
         // Default ordering (by ID)
         filtered = filtered.sort((a, b) => a.id.localeCompare(b.id));
